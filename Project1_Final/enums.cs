@@ -24,7 +24,8 @@ namespace Project1_Final
     {
         AddNewInformation = 1,
         Update = 2,
-        Delete = 3
+        Delete = 3,
+        Read = 4
 
     }
 

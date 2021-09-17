@@ -10,7 +10,7 @@ namespace Project1_Final
 
 
         static List<string> AdminMenu = new List<string>()
-            {"Create",  "Update", "Delete"};
+            {"Create",  "Update", "Delete","Read"};
 
         public static void setChosevalue(int value)
         {
@@ -213,7 +213,26 @@ namespace Project1_Final
                 UpdateFile(FieldValue, fields);
 
             else if (OperationChosen == (int)CRUD.Delete)
-                 Delete(FieldValue);
+                Delete(FieldValue);
+
+            else if (OperationChosen == (int)CRUD.Read)
+                Read(FieldValue);
+        }
+
+
+        public static void Read(String Specific_Detail_In_CV)
+        {
+            String[] linesInFile = new FileOperation().readFile();
+            foreach (string line in linesInFile)
+            {
+                string[] columns = line.Split(',');
+                if (columns[0] == Specific_Detail_In_CV)
+                {
+                    Console.WriteLine($"{line}\n");
+
+                }
+            }
+            MainMenu.AdminMenuList();
 
         }
     }
