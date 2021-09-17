@@ -7,15 +7,16 @@ namespace Project1_Final
     public static class AdminOperations
     {
 
-       
 
-       static List<string> AdminMenu = new List<string>()
+
+        static List<string> AdminMenu = new List<string>()
             {"Create",  "Update", "Delete"};
 
         public static void setChosevalue(int value)
         {
             int OperationChosen = Validation.verifyValue(AdminMenu);
-            string FieldValue;
+            string FieldValue=null;
+            List<string> attributesList = new List<string>();
 
             if (OperationChosen == (int)GOBack.GOBack)
             {
@@ -26,16 +27,7 @@ namespace Project1_Final
             if (value == (int)Fields.Experience)//Experience
             {
                 FieldValue = "Experience";
-
-                if (OperationChosen == (int)CRUD.AddNewInformation)
-                    AppendTofile(FieldValue, CV_AllFields.GetExperience()); 
-
-                else if (OperationChosen == (int)CRUD.Update)
-                    UpdateFile(FieldValue, CV_AllFields.GetExperience());
-
-                else if (OperationChosen == (int)CRUD.Delete)
-                    Delete(FieldValue);
-
+                attributesList = CV_AllFields.GetExperience();
 
             }
 
@@ -43,14 +35,8 @@ namespace Project1_Final
             {
 
                 FieldValue = "Education";
-                if (OperationChosen == (int)CRUD.AddNewInformation)
-                    AppendTofile(FieldValue, CV_AllFields.GetEducation());
+                attributesList = CV_AllFields.GetEducation();
 
-                else if (OperationChosen == (int)CRUD.Update)
-                    UpdateFile(FieldValue, CV_AllFields.GetEducation());
-
-                else if (OperationChosen == (int)CRUD.Delete)
-                    Delete(FieldValue);
 
             }//Educaion
 
@@ -58,49 +44,32 @@ namespace Project1_Final
             else if (value == (int)Fields.Skills)//skills
             {
                 FieldValue = "Skills";
+                attributesList = CV_AllFields.GetSkills();
 
-                if (OperationChosen == (int)CRUD.AddNewInformation)
-                    AppendTofile(FieldValue, CV_AllFields.GetSkills());
 
-                else if (OperationChosen == (int)CRUD.Update)
-                    UpdateFile(FieldValue, CV_AllFields.GetSkills());
-
-                else if (OperationChosen == (int)CRUD.Delete)
-                    Delete(FieldValue);
             }
 
             else if (value == (int)Fields.Technological_Skills)//Technological_Skills
             {
                 FieldValue = "Technological Skills";
+                attributesList = CV_AllFields.GetTechnological_Skills();
 
-                if (OperationChosen == (int)CRUD.AddNewInformation)
-                    AppendTofile(FieldValue, CV_AllFields.GetTechnological_Skills());
-                else if (OperationChosen == (int)CRUD.Update)
-                    UpdateFile(FieldValue, CV_AllFields.GetTechnological_Skills());
-
-                else if (OperationChosen == (int)CRUD.Delete)
-                    Delete(FieldValue);
 
             }
 
             else if (value == (int)Fields.Contact_Detail)//Contact
             {
                 FieldValue = "Contact Details";
-
-                if (OperationChosen == (int)CRUD.AddNewInformation)
-                    AppendTofile(FieldValue, CV_AllFields.GetContactDetails());
-
-                else if (OperationChosen == (int)CRUD.Update)
-                    UpdateFile(FieldValue, CV_AllFields.GetContactDetails());
-
-                else if (OperationChosen == (int)CRUD.Delete)
-                    Delete(FieldValue);
+                attributesList = CV_AllFields.GetContactDetails();
             }
 
             else
             {
                 MainMenu.AdminMenuList();
             }
+
+            OpearionSelection(OperationChosen, FieldValue, CV_AllFields.GetEducation());
+
 
         }
 
@@ -235,6 +204,17 @@ namespace Project1_Final
             MainMenu.AdminMenuList();
         }
 
+        public static void OpearionSelection(int OperationChosen,String FieldValue, List<string> fields)
+        {
+            if (OperationChosen == (int)CRUD.AddNewInformation)
+                AppendTofile(FieldValue, fields);
 
+            else if (OperationChosen == (int)CRUD.Update)
+                UpdateFile(FieldValue, fields);
+
+            else if (OperationChosen == (int)CRUD.Delete)
+                 Delete(FieldValue);
+
+        }
     }
 }

@@ -16,8 +16,7 @@ namespace Project1_Final
                 {
                     file.WriteLine(inputValue);
                 }
-                //string strFilePath = "C:\Users\p128613\source\repos\Training_Project1_CV\Training_Project1_CV\CV.csv";
-                //File.AppendAllText(strFilePath, inputValue.ToString());
+               
             }
             catch (Exception ex)
             {
