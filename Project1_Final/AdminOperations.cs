@@ -68,7 +68,7 @@ namespace Project1_Final
                 MainMenu.AdminMenuList();
             }
 
-            OpearionSelection(OperationChosen, FieldValue, CV_AllFields.GetEducation());
+            OpearionSelection(OperationChosen, FieldValue, attributesList);
 
 
         }
@@ -78,7 +78,6 @@ namespace Project1_Final
             string dummy = null;
             foreach (var value in Values)
             {
-                Console.WriteLine($"String so far {fieldToBeInput}");
 
                 Console.WriteLine($"Input {value}");
                 if (value.Contains("Many")) Console.WriteLine($"Input  all {value} sperated by comma");
@@ -171,7 +170,7 @@ namespace Project1_Final
             Console.WriteLine(linesInFile[lineIndex[valueChosen] - 1]);
 
             new FileOperation().WriteAllLines(linesInFile);
-            Console.WriteLine("sucessfulinput");
+            Console.WriteLine("sucessful Input");
             MainMenu.AdminMenuList();
         }
 

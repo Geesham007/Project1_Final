@@ -16,7 +16,7 @@ namespace Project1_Final
             if (i == (int)user.Admin)
             {
                 //Admin
-                Console.WriteLine("Admin");
+               // Console.WriteLine("Admin");
                 AdminMenuList();
 
             }
@@ -31,6 +31,8 @@ namespace Project1_Final
 
         public static void GuestMenuList()
         {
+            Console.WriteLine("\nGuest Mode");
+
             var valueChosen = Validation.verifyValue(GuestMenu);
 
             if (valueChosen == -1) { userMode.SelectUserMode(); }
@@ -39,6 +41,8 @@ namespace Project1_Final
 
         public static void AdminMenuList()
         {
+            Console.WriteLine("\nAdmin");
+
             var valueChosen = Validation.verifyValue(GuestMenu);
 
             if (valueChosen == -1) { userMode.SelectUserMode(); }
